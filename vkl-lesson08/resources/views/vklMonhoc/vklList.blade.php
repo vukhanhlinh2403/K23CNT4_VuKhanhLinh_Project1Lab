@@ -26,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($vklmonhocs as $item)
+                        @foreach ($vklMonhocs as $item)
                             <tr>
                                 <td>1</td>
                                 <td>{{$item->vklmamh}}</td>
@@ -55,7 +55,7 @@
                     <tfoot>
                         <tr>
                             <th colspan="5">
-                                <h3>tong so mon hoc: {{$vklmonhocs->count()}}</h3>
+                                <h3>tong so mon hoc: {{$vklMonhocs->count()}}</h3>
                             </th>
                         </tr>
                     </tfoot>
