@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vkltonkho', function (Blueprint $table) {
+        Schema::create('vklpxuat', function (Blueprint $table) {
             //$table->id();
             //$table->timestamps();
-            $table->string('vklNamThang');
-            $table->string('vklMaVTu');
-            $table->integer('vklSlDau');
-            $table->integer('vklTongSLX');
-            $table->integer('vklTongSLN');
-            $table->integer('vklSlCuoi');
+            $table->string('vklSoPX')->primary();
+            $table->date('vklNgayXuat');
+            $table->string('vklTenKH',100);
         });
     }
 
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vkltonkho');
+        Schema::dropIfExists('vklpxuat');
     }
 };

@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vklctpxuat', function (Blueprint $table) {
+        Schema::create('vklctpnhap', function (Blueprint $table) {
             //$table->id();
             //$table->timestamps();
-            $table->string('vklSoPX');
+            $table->string('vklSoPN');
             $table->string('vklMaVTu');
-            $table->interger('vklSlXuat');
-            $table->float('vklDgXuat');
-            $table->primary(['vklSoPX','vklMaVTu']);
-            $table->foreign('vklSoPX')->references('vklSoPX')->on('vklctpxuat');
-            $table->foreign('vklMaVTu')->references('vklMaVTu')->on('vklvattu');
+            $table->integer('vklSlNhap');
+            $table->float('vklDgNhap');
+            $table->primary(['vklSoPN','vklMaVTu']);
+            $table->foreign('vklSoPN')->references('vklSoPN')->on('vklpnhap');
+            $table->foreign('vklMaVTu')->references('vklMaVTu')->on('vklvattu'); 
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vklctpxuat');
+        Schema::dropIfExists('vklctpnhap');
     }
 };
