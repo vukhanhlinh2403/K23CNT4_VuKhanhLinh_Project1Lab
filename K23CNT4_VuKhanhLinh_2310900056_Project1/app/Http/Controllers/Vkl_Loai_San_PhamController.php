@@ -15,13 +15,13 @@ class Vkl_Loai_San_PhamController extends Controller
     public function vklList()
     {
         $vklLoaiSanPhams = Vkl_Loai_San_Pham::all();
-        return view('vkladmins.vklLoaiSanPhams.vkl-list',['vklLoaiSanPhams'=>$vklLoaiSanPhams]);
+        return view('vklAdmins.vklLoaiSanPhams.vkl-list',['vklLoaiSanPhams'=>$vklLoaiSanPhams]);
     }
 
     //create
     public function vklCreate()
     {
-        return view('vkladmins.vklLoaiSanPhams.vkl-create');
+        return view('vklAdmins.vklLoaiSanPhams.vkl-create');
     }
     public function vklCreateSubmit(Request $request)
     {
@@ -32,7 +32,7 @@ class Vkl_Loai_San_PhamController extends Controller
         $vklLoaiSanPham->vklTrangThai = $request->vklTrangThai;
 
         $vklLoaiSanPham->save();
-        return redirect()->route('vkladmis.vklLoaiSanPhams');
+        return redirect()->route('vklAdmins.vklLoaiSanPhams');
     }
 
 
@@ -40,7 +40,7 @@ class Vkl_Loai_San_PhamController extends Controller
     public function vklEdit($id)
     {
         $vklLoaiSanPham = Vkl_Loai_San_Pham::find($id);
-        return view('vkladmins.vklLoaiSanPhams.vkl-edit',['vklLoaiSanPham'=>$vklLoaiSanPham]);
+        return view('vklAdmins.vklLoaiSanPhams.vkl-edit',['vklLoaiSanPham'=>$vklLoaiSanPham]);
     }
     #Edit - submit
     public function vklEditSubmit(Request $request)
@@ -53,7 +53,7 @@ class Vkl_Loai_San_PhamController extends Controller
         $vklLoaiSanPham->vklTrangThai = $request->vklTrangThai;
 
         $vklLoaiSanPham->save();
-        return redirect()->route('vkladmis.vklLoaiSanPhams');
+        return redirect()->route('vklAdmins.vklLoaiSanPhams');
     }
 
 
@@ -61,6 +61,33 @@ class Vkl_Loai_San_PhamController extends Controller
     {
         $vklLoaiSanPham =  Vkl_Loai_San_Pham::find($id);
         $vklLoaiSanPham->delete();
-        return view()->route('vkladmins.vklLoaiSanPhams');
+        return view()->route('vklAdmins.vklLoaiSanPhams');
+    }
+
+
+    public function vklInsert()
+    {
+        return view('vklAdmins.vklLoaiSanPhams.vkl-insert');
+    }
+    public function vklInsertSubmit()
+    {
+        // kiem tra du lieu nhap
+        $validate = $request->validate([
+            'vklMaLoai'=>'required|max:255',
+            'vklTenLoai'=>'required|max:255'
+        ],
+        [
+            'vklMaLoai.required'=> 'vui long nhap ma loai ',
+            'vklMaLoai.max'=> 'ma loai toi da 255 ki tu',
+            'vklTenLoai.required'=> 'vui long nhap ten loai',
+            'vklTenLoai.max'=>'ten loai toi da 255 ki tu'
+        ]
+    );
+        $vklMaLoai = $request->input('vklMaLoai');
+        $vklTenLoai = $request->input('vklTenLoai');
+        // ghi du lieu xuong database
+        DB::insert("INSERT INTO vkl_loai_san_pham(vklMaLoai, vklTenLoai) VALUES (?,?)",[$vklMaLoai,$vklTenLoai]);
+        // chuyen sang trang danh sach
+        return view()->route('vklAdmins.vklLoaiSanPhams');
     }
 }

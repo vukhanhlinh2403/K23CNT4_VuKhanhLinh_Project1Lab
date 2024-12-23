@@ -42,8 +42,15 @@ Route::post('/vkl-admins/vkl-loai-san-phams/vkl-create',[Vkl_Loai_San_PhamContro
 
 
 Route::get('/vkl-admins/vkl-loai-san-phams/vkl-edit/{id}',[Vkl_Loai_San_PhamController::class,'vklEdit'])->name('vklAdmins.vklLoaiSanPhams.vklEdit');
-Route::post('/vkl-admins/vkl-loai-san-phams/edit',[Vkl_Loai_San_PhamController::class,'vklEditSubmit'])->name('vklAdmins.vklLoaiSanPhams.vklEditSubmit');
+Route::post('/vkl-admins/vkl-loai-san-phams/vkl-edit',[Vkl_Loai_San_PhamController::class,'vklEditSubmit'])->name('vklAdmins.vklLoaiSanPhams.vklEditSubmit');
 
 
 
 Route::get('/vkl-admins/vkl-loai-san-phams/vkl-delete/{id}',[Vkl_Loai_San_PhamController::class,'vklDelete'])->name('vklAdmins.vklLoaiSanPhams.vklDelete');
+
+
+
+Route::get('/vkl-admins/vkl-loai-san-pham/vkl-insert',
+        [Vkl_Loai_San_PhamController::class,'vklInsert'])->name('vklAdmins.vklLoaiSanPhams.vklInsert');
+Route::post('/vkl-admins/vkl-loai-san-pham/vkl-insert',
+        [Vkl_Loai_San_PhamController::class,'vklInsertSubmit'])->name('vklAdmins.vklLoaiSanPhams.vklInsertSubmit');
