@@ -14,14 +14,24 @@
                         <div class="mb-3 row">
                             <label for="vklMaLoai" class="col-sm-2 col-form-label">ma loai</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="vklMaLoai" name="vklMaLoai">
+                              <input type="text" class="form-control" 
+                              value="{{old('vklMaLoai')}}"
+                              id="vklMaLoai" name="vklMaLoai">
+                              @error('vklMaLoai')
+                                  <span class="text-danger">{{$message}}</span>
+                              @enderror
                             </div>
                         </div>
                         <div class="card-body container-fluid">
                             <div class="mb-3 row">
                                 <label for="vklTenLoai" class="col-sm-2 col-form-label">ten loai</label>
                                 <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="vklTenLoai" name="vklTenLoai">
+                                  <input type="text" class="form-control"
+                                  value="{{old('vklTenLoai')}}" 
+                                  id="vklTenLoai" name="vklTenLoai">
+                                  @error('vklTenLoai')
+                                        <span class="text-danger">{{$message}}</span>
+                                  @enderror
                                 </div>
                             </div>
                         </div>

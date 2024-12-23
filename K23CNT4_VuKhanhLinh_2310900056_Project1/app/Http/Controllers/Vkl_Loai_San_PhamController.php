@@ -25,6 +25,11 @@ class Vkl_Loai_San_PhamController extends Controller
     }
     public function vklCreateSubmit(Request $request)
     {
+        // valication dât
+        $valicationdate = $request->validate([
+            'vklMaLoai'=>'required|unique:vkl_loai_san_pham',
+            'vklTenLoai'=>'required',
+        ]);
         //ghi du lieu xuong db
         $vklLoaiSanPham = new Vkl_Loai_San_Pham;
         $vklLoaiSanPham->vklMaLoai = $request->vklMaLoai;
@@ -45,6 +50,12 @@ class Vkl_Loai_San_PhamController extends Controller
     #Edit - submit
     public function vklEditSubmit(Request $request)
     {
+
+         // valication dât
+         $valicationdate = $request->validate([
+            'vklMaLoai'=>'required',
+            'vklTenLoai'=>'required',
+        ]);
         //ghi du lieu xuong db
         $vklLoaiSanPham =  Vkl_Loai_San_Pham::find($request->id);
 
@@ -64,30 +75,4 @@ class Vkl_Loai_San_PhamController extends Controller
         return view()->route('vklAdmins.vklLoaiSanPhams');
     }
 
-
-    public function vklInsert()
-    {
-        return view('vklAdmins.vklLoaiSanPhams.vkl-insert');
-    }
-    public function vklInsertSubmit()
-    {
-        // kiem tra du lieu nhap
-        $validate = $request->validate([
-            'vklMaLoai'=>'required|max:255',
-            'vklTenLoai'=>'required|max:255'
-        ],
-        [
-            'vklMaLoai.required'=> 'vui long nhap ma loai ',
-            'vklMaLoai.max'=> 'ma loai toi da 255 ki tu',
-            'vklTenLoai.required'=> 'vui long nhap ten loai',
-            'vklTenLoai.max'=>'ten loai toi da 255 ki tu'
-        ]
-    );
-        $vklMaLoai = $request->input('vklMaLoai');
-        $vklTenLoai = $request->input('vklTenLoai');
-        // ghi du lieu xuong database
-        DB::insert("INSERT INTO vkl_loai_san_pham(vklMaLoai, vklTenLoai) VALUES (?,?)",[$vklMaLoai,$vklTenLoai]);
-        // chuyen sang trang danh sach
-        return view()->route('vklAdmins.vklLoaiSanPhams');
-    }
 }

@@ -18,6 +18,9 @@
                               <input type="text" class="form-control" 
                                 value="{{$vklLoaiSanPham->vklMaLoai}}"
                               id="vklMaLoai" name="vklMaLoai">
+                              @error('vklMaLoai')
+                                  <span class="text-danger">{{$message}}</span>
+                              @enderror
                             </div>
                         </div>
                         <div class="card-body container-fluid">
@@ -27,6 +30,9 @@
                                   <input type="text" class="form-control" 
                                   value="{{$vklLoaiSanPham->vklTenLoai}}"
                                   id="vklTenLoai" name="vklTenLoai">
+                                  @error('vklTenLoai')
+                                    <span class="text-danger">{{$message}}</span>
+                                  @enderror
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Vkl_Loai_San_PhamController;
+use App\Http\Controllers\Vkl_San_PhamController;
 use App\Http\Controllers\Vkl_Quan_TriController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,7 +51,9 @@ Route::get('/vkl-admins/vkl-loai-san-phams/vkl-delete/{id}',[Vkl_Loai_San_PhamCo
 
 
 
-Route::get('/vkl-admins/vkl-loai-san-pham/vkl-insert',
-        [Vkl_Loai_San_PhamController::class,'vklInsert'])->name('vklAdmins.vklLoaiSanPhams.vklInsert');
-Route::post('/vkl-admins/vkl-loai-san-pham/vkl-insert',
-        [Vkl_Loai_San_PhamController::class,'vklInsertSubmit'])->name('vklAdmins.vklLoaiSanPhams.vklInsertSubmit');
+// san pham
+Route::get('/vkl-admins/vkl-san-phams',[Vkl_San_PhamController::class,'vklList'])->name('vklAdmins.vklSanPhams');
+
+
+Route::get('/vkl-admins/vkl-san-phams/vkl-create',[Vkl_San_PhamController::class,'vklCreate'])->name('vklAdmins.vklSanPhams.vklCreate');
+Route::post('/vkl-admins/vkl-san-phams/vkl-create',[Vkl_San_PhamController::class,'vklCreateSubmit'])->name('vklAdmins.vklSanPhams.vklCreateSubmit');
