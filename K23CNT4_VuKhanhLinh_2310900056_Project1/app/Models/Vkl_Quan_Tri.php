@@ -10,5 +10,7 @@ class Vkl_Quan_Tri extends Model
     use HasFactory;
 
 
-    protected $table='Vkl_Quan_Tri';
+    protected $table='vkl_quan_tri';
+
+
 }

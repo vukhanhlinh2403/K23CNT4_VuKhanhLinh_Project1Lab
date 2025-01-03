@@ -1,13 +1,13 @@
 @extends('_layout.admins._master')
-@section('title','Danh sach san pham')
+@section('title','Danh sach chi tiet hoa don')
 
 @section('content-body')
     <div class="container boder">
         <div class="row ">
            <div class="col-12 ">
                 <div class="d-flex w-100 justify-content-between">
-                    <h1>danh sach  san pham</h1>
-                    <a href="{{route('vklAdmins.vklSanPhams.vklCreate')}}" class="btn btn-success">them moi</a>
+                    <h1>danh sach chi tiet hoa don</h1>
+                    <a href="{{route('vklAdmins.vklCtHoaDons.vklCreate')}}" class="btn btn-success">them moi</a>
                 </div>
            </div>
            <div class="row">
@@ -15,31 +15,30 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>ma san pham</th>
-                            <th>ten san pham</th>
-                            <th>hinh anh</th>
-                            <th>so luong</th>
-                            <th>don gia</th>
+                            <th>hoa don id</th>
+                            <th>san pham id</th>
+                            <th>so luong mua</th>
+                            <th>don gia mua</th>
+                            <th>thanh tien</th>
                             <th>trang thai</th>
                             <th>chuc nang</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ( $vklSanPhams  as $item)
+                        @forelse (  $vklCtHoaDons  as $item)
                             <tr>
                                 <td class="text-center">{{$loop->iteration}}</td>
-                                <td>{{$item->vklMaSanPham}}</td>
-                                <td>{{$item->vklTenSanPham}}</td>
-                                <td>{{$item->vklHinhAnh}}</td>
-                                <td>{{$item->vklSoLuong}}</td>
-                                <td>{{$item->vklDonGia}}</td>
-                                <td>{{$item->vklMaLoai}}</td>
+                                <td>{{$item->vklHoaDonID}}</td>
+                                <td>{{$item->vklSanPhamID}}</td>
+                                <td>{{$item->vklSoLuongMua}}</td>
+                                <td>{{$item->vklDonGiaMua}}</td>
+                                <td>{{$item->vklThanhTien}}</td>
                                 <td>{{$item->vklTrangThai}}</td>
                                 <td>
-                                        <a href="/vkl-admins/vkl-san-phams/vkl-detail/{{$item->id}}" class="btn btn-success btn-sm" title="Xem">view</a>
-                                        <a href="/vkl-admins/vkl-san-phams/vkl-edit/{{$item->id}}" class="btn btn-primary btn-sm" title="Chỉnh sửa">Edit</a>
+                                        <a href="/vkl-admins/vkl-ct-hoa-dons/vkl-detail/{{$item->id}}"class="btn btn-success btn-sm" title="Xem">detail</a>
+                                        <a href="/vkl-admins/vkl-ct-hoa-dons/vkl-edit/{{$item->id}}"class="btn btn-primary btn-sm" title="Chỉnh sửa">Edit</a>
                                     
-                                        <a href="/vkl-admins/vkl-san-phams/vkl-delete/{{$item->id}}" class="btn btn-danger btn-sm"
+                                        <a href="/vkl-admins/vkl-ct-hoa-dons/vkl-delete/{{$item->id}}"class="btn btn-danger btn-sm" 
                                             onclick="return confirm('bạn có chắc chắn xóa không? ID: {{ $item->id }}');" title="Xóa"
                                             >    
                                             Delete</a>

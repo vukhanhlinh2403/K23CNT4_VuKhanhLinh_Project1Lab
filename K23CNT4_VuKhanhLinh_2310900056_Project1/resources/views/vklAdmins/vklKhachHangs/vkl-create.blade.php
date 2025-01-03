@@ -1,35 +1,35 @@
 @extends('_layout.admins._master')
-@section('title','Danh sach san pham')
+@section('title','Danh sach khach hang')
 
 @section('content-body')
     <div class="container boder">
         <div class="row ">
             <div class="col">
-              <form action="{{route('vklAdmins.vklSanPhams.vklCreateSubmit')}}" method="post">
+              <form action="{{route('vklAdmins.vklKhachHangs.vklCreateSubmit')}}" method="post">
                     @csrf
                     <div class="card-header">
-                        <h2>thêm mới sản phẩm</h2>
+                        <h2>thêm mới khach hang</h2>
                     </div>
                     <div class="card-body container-fluid">
                         <div class="mb-3 row">
-                            <label for="vklMaSanPham" class="col-sm-2 col-form-label">ma san pham</label>
+                            <label for="vklMaKhachHang" class="col-sm-2 col-form-label">ma khach hang</label>
                             <div class="col-sm-10">
                               <input type="text" class="form-control" 
-                              value="{{old('vklMaSanPham')}}"
-                              id="vklMaSanPham" name="vklMaSanPham">
-                              @error('vklMaSanPham')
+                              value="{{old('vklMaKhachHang')}}"
+                              id="vklMaKhachHang" name="vklMaKhachHang">
+                              @error('vklMaKhachHang')
                                   <span class="text-danger">{{$message}}</span>
                               @enderror
                             </div>
                         </div>
                         <div class="card-body container-fluid">
                             <div class="mb-3 row">
-                                <label for="vklTenSanPham" class="col-sm-2 col-form-label">ten san pham</label>
+                                <label for="vklHoTenKhachHang" class="col-sm-2 col-form-label">ho ten khach hang</label>
                                 <div class="col-sm-10">
                                   <input type="text" class="form-control"
-                                  value="{{old('vklTenSanPham')}}" 
-                                  id="vklTenSanPham" name="vklTenSanPham">
-                                  @error('vklTenSanPham')
+                                  value="{{old('vklHoTenKhachHang')}}" 
+                                  id="vklHoTenKhachHang" name="vklHoTenKhachHang">
+                                  @error('vklHoTenKhachHang')
                                         <span class="text-danger">{{$message}}</span>
                                   @enderror
                                 </div>
@@ -37,11 +37,12 @@
                         </div>
                         <div class="card-body container-fluid">
                             <div class="mb-3 row">
-                                <label for="vklHinhAnh" class="col-sm-2 col-form-label">hinh anh</label>
+                                <label for="vklEmail" class="col-sm-2 col-form-label">email</label>
                                 <div class="col-sm-10">
-                                  <input type="file" class="form-control"
-                                  id="vklHinhAnh" name="vklHinhAnh">
-                                  @error('vklHinhAnh')
+                                  <input type="text" class="form-control"
+                                  value="{{old('vklEmail')}}" 
+                                  id="vklEmail" name="vklEmail">
+                                  @error('vklEmail')
                                         <span class="text-danger">{{$message}}</span>
                                   @enderror
                                 </div>
@@ -49,12 +50,12 @@
                         </div>
                         <div class="card-body container-fluid">
                             <div class="mb-3 row">
-                                <label for="vklSoLuong" class="col-sm-2 col-form-label">so luong</label>
+                                <label for="vklMatKhau" class="col-sm-2 col-form-label">mat khau </label>
                                 <div class="col-sm-10">
-                                  <input type="number" class="form-control"
-                                  value="{{old('vklSoLuong')}}" 
-                                  id="vklSoLuong" name="vklSoLuong">
-                                  @error('vklSoLuong')
+                                  <input type="text" class="form-control"
+                                  value="{{old('vklMatKhau')}}" 
+                                  id="vklMatKhau" name="vklMatKhau">
+                                  @error('vklMatKhau')
                                         <span class="text-danger">{{$message}}</span>
                                   @enderror
                                 </div>
@@ -62,12 +63,12 @@
                         </div>
                         <div class="card-body container-fluid">
                             <div class="mb-3 row">
-                                <label for="vklDonGia" class="col-sm-2 col-form-label">don gia</label>
+                                <label for="vklDienThoai" class="col-sm-2 col-form-label">dien thoai</label>
                                 <div class="col-sm-10">
-                                  <input type="number" class="form-control"
-                                  value="{{old('vklDonGia')}}" 
-                                  id="vklDonGia" name="vklDonGia">
-                                  @error('vklDonGia')
+                                  <input type="text" class="form-control"
+                                  value="{{old('vklDienThoai')}}" 
+                                  id="vklDienThoai" name="vklDienThoai">
+                                  @error('vklEmail')
                                         <span class="text-danger">{{$message}}</span>
                                   @enderror
                                 </div>
@@ -75,13 +76,27 @@
                         </div>
                         <div class="card-body container-fluid">
                             <div class="mb-3 row">
-                                <label for="vklMaLoai" class="col-sm-2 col-form-label">loai danh muc</label>
+                                <label for="vklDiaChi" class="col-sm-2 col-form-label">dia chi</label>
                                 <div class="col-sm-10">
-                                  <select name="vklMaLoai" id="vklMaLoai" class="form-control">
-                                    @foreach ($vklLoaiSanPhams as $item)
-                                        <option value="{{$item->vklMaLoai}}">{{$item->vklTenLoai}}</option>
-                                    @endforeach
-                                  </select>
+                                  <input type="text" class="form-control"
+                                  value="{{old('vklDiaChi')}}" 
+                                  id="vklDiaChi" name="vklDiaChi">
+                                  @error('vklDiaChi')
+                                        <span class="text-danger">{{$message}}</span>
+                                  @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body container-fluid">
+                            <div class="mb-3 row">
+                                <label for="vklNgayDangKy" class="col-sm-2 col-form-label">ngay dang ky</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control"
+                                  value="{{old('vklNgayDangKy')}}" 
+                                  id="vklNgayDangKy" name="vklNgayDangKy">
+                                  @error('vklNgayDangKy')
+                                        <span class="text-danger">{{$message}}</span>
+                                  @enderror
                                 </div>
                             </div>
                         </div>
@@ -89,7 +104,7 @@
                             <div class="mb-3 row">
                                 <label for="vklTrangThai" class="col-sm-2 col-form-label">trang thai</label>
                                 <div class="col-sm-10">
-                                  <input type="radio"  id="vklTrangThai1" name="vklTrangThai" value="1"
+                                  <input type="radio" id="vklTrangThai1" name="vklTrangThai" value="1"
                                   checked />
                                   <label for="vklTrangThai">hien thi</label>
                                     &nbsp;
@@ -100,7 +115,7 @@
                         </div>
                     <div class="card-footer">
                         <button class="btn btn-success">ghi lai</button>
-                        <a href="{{route('vklAdmins.vklSanPhams.vkllist')}}" class="btn btn-secondary">quay lai</a>
+                        <a href="{{route('vklAdmins.vklKhachHangs.vkllist')}}" class="btn btn-secondary">quay lai</a>
                     </div>
               </form>
             </div>

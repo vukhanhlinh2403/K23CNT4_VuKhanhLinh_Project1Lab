@@ -11,5 +11,5 @@ class Vkl_San_Pham extends Model
 
 
 
-    protected $table='Vkl_San_Pham';
+    protected $table='vkl_san_pham';
 }

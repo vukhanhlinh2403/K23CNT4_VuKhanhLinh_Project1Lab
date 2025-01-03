@@ -1,36 +1,36 @@
 @extends('_layout.admins._master')
-@section('title','Sửa thông tin loại sản phẩm')
+@section('title','Sửa thông tin quan tri')
 
 @section('content-body')
     <div class="container boder">
         <div class="row ">
             <div class="col">
-              <form action="{{route('vklAdmins.vklLoaiSanPhams.vklEditSubmit')}}" method="post">
+              <form action="{{route('vklAdmins.vklQuanTris.vklEditSubmit')}}" method="post">
                     @csrf
-                    <input type="hidden" name="id" id="id" value="{{$vklLoaiSanPham->id}}">
+                    <input type="hidden" name="id" id="id" value="{{$vklQuanTri->id}}">
                     <div class="card-header">
-                        <h2>sửa thông tin  loại sản phẩm</h2>
+                        <h2>sửa thông tin  quan tri</h2>
                     </div>
                     <div class="card-body container-fluid">
                         <div class="mb-3 row">
-                            <label for="vklMaLoai" class="col-sm-2 col-form-label">ma loai</label>
+                            <label for="vklTaiKhoan" class="col-sm-2 col-form-label">tai khoan</label>
                             <div class="col-sm-10">
                               <input type="text" class="form-control" 
-                                value="{{$vklLoaiSanPham->vklMaLoai}}"
-                              id="vklMaLoai" name="vklMaLoai">
-                              @error('vklMaLoai')
+                                value="{{$vklQuanTri->vklTaiKhoan}}"
+                              id="vklTaiKhoan" name="vklTaiKhoan">
+                              @error('vklTaiKhoan')
                                   <span class="text-danger">{{$message}}</span>
                               @enderror
                                </div>
                         </div>
                         <div class="card-body container-fluid">
                             <div class="mb-3 row">
-                                <label for="vklTenLoai" class="col-sm-2 col-form-label">ten loai</label>
+                                <label for="vklMatKhau" class="col-sm-2 col-form-label">mat khau</label>
                                 <div class="col-sm-10">
                                   <input type="text" class="form-control" 
-                                  value="{{$vklLoaiSanPham->vklTenLoai}}"
-                                  id="vklTenLoai" name="vklTenLoai">
-                                  @error('vklTenLoai')
+                                  value="{{$vklQuanTri->vklMatKhau}}"
+                                  id="vklMatKhau" name="vklMatKhau">
+                                  @error('vklMatKhau')
                                     <span class="text-danger">{{$message}}</span>
                                   @enderror
                                 </div>
@@ -40,7 +40,7 @@
                             <div class="mb-3 row">
                                 <label for="vklTrangThai" class="col-sm-2 col-form-label">trang thai</label>
                                 <div class="col-sm-10">
-                                    @if($vklLoaiSanPham->vklTrangThai == 1)
+                                    @if($vklQuanTri->vklTrangThai == 1)
                                         <input type="radio"  id="vklTrangThai1" name="vklTrangThai" value="1"
                                             checked />
                                         <label for="vklTrangThai">hien thi</label>

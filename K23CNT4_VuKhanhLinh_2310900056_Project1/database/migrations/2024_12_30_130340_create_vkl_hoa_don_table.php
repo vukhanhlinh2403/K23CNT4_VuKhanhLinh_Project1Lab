@@ -16,12 +16,14 @@ return new class extends Migration
             $table->string('vklMaHoaDon',255)->unique();
             $table->bigInteger('vklMaKhachHang')->references('id')->on('vkl_khach_hang');
             $table->date('vklNgayHoaDon');
+            $table->date('vklNgayNhan');
             $table->string('vklHoTenKhachHang',255);
             $table->string('vklEmail',255);
             $table->string('vklDienThoai',255);
             $table->string('vklDiaChi',255);
             $table->float('vklTongTriGia',255);
             $table->tinyInteger('vklTrangThai');
+
             $table->timestamps();
         });
     }

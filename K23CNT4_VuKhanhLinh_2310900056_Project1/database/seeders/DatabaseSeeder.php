@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
             vkl_quan_triTableSeeder::class,
             vkl_loai_san_phamTableSeeder::class,
             vkl_san_phamTableSeeder::class,
+            vkl_khach_hangTableSeeder::class,
+            vkl_hoa_donTableSeeder::class,
+            vkl_ct_hoa_donTableSeeder::class,
         ]);
     }
 }

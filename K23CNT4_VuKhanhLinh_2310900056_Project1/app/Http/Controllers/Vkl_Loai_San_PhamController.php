@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Htpp\RedirectResponde;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Vkl_Loai_San_Pham;
+use App\Models\Vkl_Loai_San_Pham;
 use Illuminate\Support\Facades\DB;
 
 
@@ -37,7 +37,7 @@ class Vkl_Loai_San_PhamController extends Controller
         $vklLoaiSanPham->vklTrangThai = $request->vklTrangThai;
 
         $vklLoaiSanPham->save();
-        return redirect()->route('vklAdmins.vklLoaiSanPhams');
+        return redirect()->route('vklAdmins.vklLoaiSanPhams.vkllist');
     }
 
 
@@ -64,7 +64,7 @@ class Vkl_Loai_San_PhamController extends Controller
         $vklLoaiSanPham->vklTrangThai = $request->vklTrangThai;
 
         $vklLoaiSanPham->save();
-        return redirect()->route('vklAdmins.vklLoaiSanPhams');
+        return redirect()->route('vklAdmins.vklLoaiSanPhams.vkllist');
     }
 
 
@@ -72,7 +72,13 @@ class Vkl_Loai_San_PhamController extends Controller
     {
         $vklLoaiSanPham =  Vkl_Loai_San_Pham::find($id);
         $vklLoaiSanPham->delete();
-        return view()->route('vklAdmins.vklLoaiSanPhams');
+        return redirect()->route('vklAdmins.vklLoaiSanPhams.vkllist');
     }
 
+
+    public function vklDetail($id)
+    {
+        $vklLoaiSanPham = Vkl_Loai_San_Pham::find($id);
+        return view('vklAdmins.vklLoaiSanPhams.vkl-detail',['vklLoaiSanPham'=>$vklLoaiSanPham]);
+    }
 }
