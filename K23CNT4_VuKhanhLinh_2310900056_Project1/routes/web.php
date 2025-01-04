@@ -28,6 +28,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admins/vkl-login', [Vkl_Quan_TriController::class, 'vklLogin'])->name('vklAdmins.vklLogin.vkl-login');
+Route::post('/admins/vkl-login', [Vkl_QUAN_TRIController::class, 'vklLoginSubmit'])->name('vklAdmins.vklLogin.vklLoginSubmit');
 
 #admins -route
 Route::get('/vkl-admins',function(){
