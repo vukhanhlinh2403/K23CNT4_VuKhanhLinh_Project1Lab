@@ -12,4 +12,7 @@ class Vkl_San_Pham extends Model
 
 
     protected $table='vkl_san_pham';
+    protected $primaryKey = 'id';
+    public $incrementing = false; 
+    public $timestamps = true; 
 }

@@ -4,19 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vkl_San_Pham; 
-use App\Models\Vkl_Khach_HaNG; 
+use App\Models\Vkl_Khach_Hang; 
 use App\Models\Vkl_Tin_Tuc; 
 
 class Vkl_Danh_Sach_Quan_TriController extends Controller
 {
     public function vklDanhMuc()
         {
-            $vklproductCount = Vkl_San_Pham::count();
+            $productCount = Vkl_San_Pham::count();
         
-            $vkluserCount = Vkl_Khach_Hang::count();
-            $vklttCount = Vkl_Tin_Tuc::count();
+            $userCount = Vkl_Khach_Hang::count();
+            $ttCount = Vkl_Tin_Tuc::count();
 
-            return view('vklAdmins.vklDsQuanTris.vklDanhMucs', compact('vklproductCount', 'vkluserCount','vklttCount'));
+            return view('vklAdmins.vklDsQuanTris.vklDanhMucs', compact('productCount', 'userCount','ttCount'));
         }
 
         public function vklNguoiDung()

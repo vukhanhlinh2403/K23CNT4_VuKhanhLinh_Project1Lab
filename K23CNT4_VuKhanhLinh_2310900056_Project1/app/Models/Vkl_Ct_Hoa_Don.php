@@ -12,17 +12,23 @@ class Vkl_Ct_Hoa_Don extends Model
 
 
     protected $table='vkl_ct_hoa_don';
+    protected $primaryKey = 'id';
 
-
-    public function HoaDon()
+    public $timestamps = true; 
+    protected $fillable = [
+       'nhtHoaDonID',   // Đảm bảo có trường vklHoaDonID ở đây
+        'nhtSanPhamID',
+        'nhtSoLuongMua',
+        'nhtDonGiaMua',
+        'nhtThanhTien',
+        'nhtTrangThai',
+    ];
+    public function vkklHoaDon()
     {
         return $this->belongsTo(Vkl_Hoa_Don::class, 'vklHoaDonID', 'id');
     }
-
-
-    public function SanPham()
+    public function vklSanPham()
     {
         return $this->belongsTo(Vkl_San_Pham::class, 'vklSanPhamID', 'id');
     }
-
 }

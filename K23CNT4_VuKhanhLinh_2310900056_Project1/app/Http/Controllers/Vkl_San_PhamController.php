@@ -30,22 +30,32 @@ class Vkl_San_PhamController extends Controller
     {
         // valication data
         $valicationdate = $request->validate([
-            'vklMaSanPham'=>'required|unique:vkl_san_pham|max:255',
-            'vklTenSanPham'=>'required|string|max:255',
-            'vklHinhAnh'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'vklSoLuong'=>'required|integer|min:0',
-            'vklDonGia'=>'required|numeric|min:0',
-            'vklMaLoai'=>'required|integer',
+            'vklMaSanPham' => 'required|unique:vkl_san_pham,vklMaSanPham',
+            'vklTenSanPham' => 'required|string|max:255',
+            'vklHinhAnh' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240', 
+            'vklSoLuong' => 'required|numeric|min:1',
+            'vklDonGia' => 'required|numeric',
+            'vklMaLoai' => 'required|exists:vkl_loai_san_pham,id',
+            'vklTrangThai' => 'required|in:0,1'
         ]);
         //ghi du lieu xuong db
-        $vklSanPham = new Vkl_San_Pham;
-        $vklSanPham->vklMaLoai = $request->vklMaLoai;
-        $vklSanPham->vklTenLoai = $request->vklTenLoai;
-        $vklSanPham->vklHinhAnh = $request->vklHinhAnh;
-        $vklSanPham->vklSoLuong = $request->vklSoLuong;
-        $vklSanPham->vklDonGia = $request->vklDonGia;
-        $vklSanPham->vklMaLoai = $request->vklMaLoai;
-        $vklSanPham->vklTrangThai = $request->vklTrangThai;
+        $vklSanPham = new NHT_SAN_PHAM;
+        $vklSanPham->vklMaSanPham = $request->vklMaSanPham;
+        $vklSanPham->vklTenSanPham = $request->vklTenSanPham;
+    if ($request->hasFile('vklHinhAnh')) {
+        $file = $request->file('vklHinhAnh');
+        if ($file->isValid()) {
+            $fileName = $request->vklMaSanPham . '.' . $file->extension();
+            $file->storeAs('public/img/san_pham', $fileName); // Lưu tệp vào thư mục storage/app/public/img/san_pham
+            $vklSanPham->vklHinhAnh = 'img/san_pham/' . $fileName; 
+        }
+    }
+
+    // Lưu các thông tin còn lại vào cơ sở dữ liệu
+    $vklSanPham->vklSoLuong = $request->vklSoLuong;
+    $vklSanPham->vklDonGia = $request->vklDonGia;
+    $vklSanPham->vklMaLoai = $request->vklMaLoai;
+    $vklSanPham->vklTrangThai = $request->vklTrangThai;
 
         $vklSanPham->save();
         return redirect()->route('vklAdmins.vklSanPhams.vkllist');

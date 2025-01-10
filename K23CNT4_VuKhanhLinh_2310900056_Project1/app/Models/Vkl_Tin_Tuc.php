@@ -12,4 +12,7 @@ class Vkl_Tin_Tuc extends Model
 
 
     protected $table='vkl_tin_tuc';
+    protected $primaryKey = 'id';
+    public $incrementing = false; 
+    public $timestamps = true; 
 }

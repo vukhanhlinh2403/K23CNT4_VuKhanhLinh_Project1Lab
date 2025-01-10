@@ -28,8 +28,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admins/vkl-login', [Vkl_Quan_TriController::class, 'vklLogin'])->name('vklAdmins.vklLogin.vkl-login');
-Route::post('/admins/vkl-login', [Vkl_QUAN_TRIController::class, 'vklLoginSubmit'])->name('vklAdmins.vklLogin.vklLoginSubmit');
+Route::get('/admins/vkl-login', [Vkl_Quan_TriController::class, 'vklLogin'])->name('Admins.VklLogin.vklLogin');
+Route::post('/admins/vkl-login', [Vkl_QUAN_TRIController::class, 'vklLoginSubmit'])->name('Admins.VklLogin.vklLoginSubmit');
 
 #admins -route
 Route::get('/vkl-admins',function(){
@@ -187,3 +187,66 @@ Route::post('/vkl-admins/vkl-tin-tucs/vkl-edit',[Vkl_Tin_TucController::class,'v
 Route::get('/vkl-admins/vkl-tin-tucs/vkl-detail/{id}',[Vkl_Tin_TucController::class,'vklDetail'])->name('vklAdmins.vklTinTucs.vklDetail');
 
 Route::get('/vkl-admins/vkl-tin-tucs/vkl-delete/{id}',[Vkl_Tin_TucController::class,'vklDelete'])->name('vklAdmins.vklTinTucs.vklDelete');
+
+
+
+
+
+use App\Http\Controllers\vklHomeController;
+
+Route::get('/vkl-user', [vklHomeController::class, 'vklindex'])->name('vkluser.vklhome');
+Route::get('/vkl-user1', [vklHomeController::class, 'vklindex1'])->name('vkluser.vklhome1');
+
+Route::get('/vkl-user/show/{id}', [vklHomeController::class, 'vklshow'])->name('vkluser.vklshow');
+
+Route::get('/vklsearch', [Vkl_San_PhamController::class, 'vklsearch'])->name('vkluser.vklsearch');
+Route::get('/vklsearch1', [Vkl_San_PhamController::class, 'vklsearch1'])->name('vkluser.vklsearch1');
+
+Route::get('/vkluser/login', [Vkl_LoginController::class, 'vklLogin'])->name('vkluser.vkllogin');
+Route::post('/vkluser/login', [Vkl_LoginController::class, 'vklLoginSubmit'])->name('vkluser.vklLoginSubmit');
+Route::get('/vkluser/logout', [Vkl_LoginController::class, 'vklLogout'])->name('vkluser.logout');
+
+
+
+route::get('/vkl-user/support',function()
+{
+    return view('vkluser.support');
+});
+
+Route::get('/vkl-user/signup', [Vkl_SignupController::class, 'vklsignup'])->name('vkluser.vklsignup');
+Route::post('/vkl-user/signup', [Vkl_SignupController::class, 'vklsignupSubmit'])->name('vkluser.vklsignupSubmit');
+
+
+
+Route::get('/vkl-user/thanhtoan/{product_id}', [Vkl_Ct_Hoa_DonController::class,'vklthanhtoan'])->name('vkluser.vklthanhtoan');
+
+Route::post('/vkl-user/thanhtoan', [Vkl_Ct_Hoa_DonController::class,'storeThanhtoan'])->name('vkluser.storeThanhToan');
+
+
+Route::get('san-pham/{SanPham}', [Vkl_Ct_Hoa_DonController::class, 'show'])->name('sanpham.show');
+Route::post('mua-san-pham/{SanPham}', [Vkl_Ct_Hoa_DonController::class, 'store'])->name('hoadon.store');
+
+Route::get('hoa-don/{HoaDonId}/san-pham/{SanPhamId}', [vkl_Hoa_DonController::class, 'show'])->name('hoadon.show');
+
+
+
+Route::get('/cthoadon/{hoaDonId}/{sanPhamId}', [Vkl_Ct_Hoa_DonController::class, 'Create'])->name('CtHoaDons.Create');
+
+Route::post('/cthoadon/store', [Vkl_Ct_Hoa_DonController::class, 'storecthoadon'])->name('cthoadon.storecthoadon');
+
+
+Route::get('/hoa-don-id/{HoaDonId}/san-pham-id/{SanPhamId}', [Vkl_Ct_Hoa_DonController::class, 'cthoadonshow'])->name('cthoadon.cthoadonshow');
+
+
+
+use App\Http\Controllers\vklCartController;
+
+Route::post('/cart/add', [vklCartController::class, 'vklAddToCart'])->name('cart.add');
+ 
+route::get('/vkluser-vkllienhe',function(){
+    return view('vkluser.vkllienhe');
+})->name('vkluser.vkllienhe');
+
+route::get('/vkluser-vklgioithieu',function(){
+    return view('vkluser.vklgioithieu');
+})->name('vkluser.vklgioithieu');

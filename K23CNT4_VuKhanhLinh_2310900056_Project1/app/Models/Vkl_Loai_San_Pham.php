@@ -9,8 +9,6 @@ class Vkl_Loai_San_Pham extends Model
 {
     use HasFactory;
 
-
-
-    
     protected $table='vkl_loai_san_pham';
+    
 }

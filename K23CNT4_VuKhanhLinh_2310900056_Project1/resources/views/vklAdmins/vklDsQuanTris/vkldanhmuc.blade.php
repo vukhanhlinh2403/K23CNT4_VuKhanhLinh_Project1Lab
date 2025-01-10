@@ -9,7 +9,7 @@
             <div class="card text-center shadow-lg">
                 <div class="card-body bg-primary text-white">
                     <h5 class="card-title">Sản Phẩm</h5>
-                    <p class="card-text">{{ $vklproductCount }} sản phẩm</p> 
+                    <p class="card-text">{{ $productCount }} sản phẩm</p> 
                     <a href="/vkl-admins/vklDsQuanTris/vklSanPham" class="btn btn-outline-light">Xem Sản Phẩm</a>
                 </div>
             </div>
@@ -19,7 +19,7 @@
             <div class="card text-center shadow-lg">
                 <div class="card-body bg-info text-white">
                     <h5 class="card-title">Tin Tức</h5>
-                    <p class="card-text" >Tin Tức New : {{ $vklttCount }}</p>
+                    <p class="card-text" >Tin Tức New : {{ $ttCount }}</p>
                     <a href="{{route('vklAdmins.vklDsQuanTris.vklDanhMucs.vklTinTuc')}}" class="btn btn-outline-light">Xem Tin Tức</a>
                 </div>
             </div>
@@ -29,7 +29,7 @@
             <div class="card text-center shadow-lg">
                 <div class="card-body bg-success text-white">
                     <h5 class="card-title">Tài Khoản Người Dùng</h5>
-                    <p class="card-text"> Số lượng người dùng: {{$vkluserCount}}</p>
+                    <p class="card-text"> Số lượng người dùng: {{$userCount}}</p>
                     <a href="/vkl-admins/vklDsQuanTris/vklNguoiDung" class="btn btn-outline-light">Xem Người Dùng</a>
                 </div>
             </div>

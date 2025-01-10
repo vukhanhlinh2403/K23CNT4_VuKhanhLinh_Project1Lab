@@ -11,6 +11,6 @@ class Vkl_Quan_Tri extends Model
 
 
     protected $table='vkl_quan_tri';
-
-
+    protected $fillable = ['vklTaiKhoan', 'vklMatKhau', 'vklTrangThai'];
+    public $timestamps = false;
 }
